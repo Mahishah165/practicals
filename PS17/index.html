@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+    <script>
+        async function fetchUsers() {
+            const response = await fetch("http://localhost:3000/users");
+            const users = await response.json();
+            document.getElementById("userList").innerHTML = users.map(user => 
+                `<li>${user.name} - ${user.email}</li>`).join("");
+        }
+    </script>
+</head>
+<body onload="fetchUsers()">
+    <h2>User List</h2>
+    <ul id="userList"></ul>
+</body>
+</html>

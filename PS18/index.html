@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Catalog</title>
+    <script>
+        async function fetchProducts() {
+            const response = await fetch("http://localhost:3001/products");
+            const products = await response.json();
+            document.getElementById("productList").innerHTML = products.map(product =>
+                `<li><img src="${product.image}" width="50"> ${product.name} - ₹${product.price}</li>`).join("");
+        }
+    </script>
+</head>
+<body onload="fetchProducts()">
+    <h2>Product Catalog</h2>
+    <ul id="productList"></ul>
+</body>
+</html>
